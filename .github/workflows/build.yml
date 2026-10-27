@@ -1,0 +1,21 @@
+name: Compile firmware
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install build helper
+        run: |
+          python3 -m venv "$RUNNER_TEMP/luma84-ci"
+          "$RUNNER_TEMP/luma84-ci/bin/python" -m pip install uv==0.10.12
+          echo "$RUNNER_TEMP/luma84-ci/bin" >> "$GITHUB_PATH"
+      - name: Compile without accessing hardware
+        run: python3 tools/build.py

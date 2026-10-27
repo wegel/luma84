@@ -1,0 +1,32 @@
+diff --git a/quantum/rgblight/rgblight.c b/quantum/rgblight/rgblight.c
+index ddccc9ba..fc7cc049 100644
+--- a/quantum/rgblight/rgblight.c
++++ b/quantum/rgblight/rgblight.c
+@@ -875,7 +875,8 @@ void rgblight_wakeup(void) {
+ 
+ #endif
+ 
+-void rgblight_set(void) {
++/* Modified 2026-10-27: let Luma84's custom driver supply its original implementation. */
++__attribute__((weak)) void rgblight_set(void) {
+     if (!rgblight_config.enable) {
+         for (uint8_t i = rgblight_ranges.effect_start_pos; i < rgblight_ranges.effect_end_pos; i++) {
+             rgblight_driver.set_color(rgblight_led_index(i), 0, 0, 0);
+@@ -1149,7 +1150,7 @@ static uint8_t breathe_calc(uint8_t pos) {
+ 
+ __attribute__((weak)) const uint8_t RGBLED_BREATHING_INTERVALS[] PROGMEM = {30, 20, 10, 5};
+ 
+-void rgblight_effect_breathing(animation_status_t *anim) {
++__attribute__((weak)) void rgblight_effect_breathing(animation_status_t *anim) {
+     uint8_t val = breathe_calc(anim->pos);
+     rgblight_sethsv_noeeprom_old(rgblight_config.hue, rgblight_config.sat, val);
+     anim->pos = (anim->pos + 1);
+@@ -1159,7 +1160,7 @@ void rgblight_effect_breathing(animation_status_t *anim) {
+ #ifdef RGBLIGHT_EFFECT_RAINBOW_MOOD
+ __attribute__((weak)) const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {120, 60, 30};
+ 
+-void rgblight_effect_rainbow_mood(animation_status_t *anim) {
++__attribute__((weak)) void rgblight_effect_rainbow_mood(animation_status_t *anim) {
+     rgblight_sethsv_noeeprom_old(anim->current_hue, rgblight_config.sat, rgblight_config.val);
+     anim->current_hue++;
+ }

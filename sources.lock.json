@@ -1,0 +1,30 @@
+{
+  "vendor": {
+    "url": "https://github.com/Epomaker/luma84",
+    "commit": "3753140abcc9ba7c8cca04721f0e1400b82ff9fe"
+  },
+  "qmk": {
+    "url": "https://github.com/qmk/qmk_firmware",
+    "commit": "a63fd7f01cdabd9ce85bb09ae2b573fd3b8e60aa",
+    "tag": "0.28.0"
+  },
+  "python": "3.11",
+  "submodules": {
+    "lib/chibios": "2365f844292513ea0ee9eea6ab778d56f9ccd3b9",
+    "lib/chibios-contrib": "3ac181e4ca5cafddaf8b472baa1d09c2b24c77b6",
+    "lib/lufa": "549b97320d515bfca2f95c145a67bd13be968faa",
+    "lib/printf": "c2e3b4e10d281e7f0f694d3ecbd9f320977288cc"
+  },
+  "arm_gcc": {
+    "tag": "v13.2.1-1.1",
+    "name": "xpack-arm-none-eabi-gcc-13.2.1-1.1-linux-x64.tar.gz",
+    "url": "https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v13.2.1-1.1/xpack-arm-none-eabi-gcc-13.2.1-1.1-linux-x64.tar.gz",
+    "sha256": "1252a8cafe9237de27a765376697230368eec21db44dc3f1edeb8d838dabd530",
+    "size": 268158135
+  },
+  "vendor_image": {
+    "url": "https://github.com/Epomaker/luma84/blob/3753140abcc9ba7c8cca04721f0e1400b82ff9fe/releases/hc844_via_v1.hex",
+    "decoded_size": 72184,
+    "decoded_sha256": "ad648b0380b830deacfc79b9f0d7590cb3b03b4693cb175a93a996936dd13c87"
+  }
+}

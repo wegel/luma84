@@ -1,0 +1,14 @@
+/work/
+/dist/
+/.venv/
+/downloads/
+/evidence/
+__pycache__/
+*.pyc
+*.bin
+*.elf
+*.hex
+*.o
+*.map
+*.log
+.DS_Store

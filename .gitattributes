@@ -1,0 +1,4 @@
+# Preserve upstream whitespace in copied code and unified-diff context lines.
+keyboard/** -whitespace
+wireless/** -whitespace
+patches/*.patch -whitespace
