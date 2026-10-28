@@ -57,9 +57,8 @@ The checks require LED power and the matrix to stay off when the master switch
 is off, preserve the previous behavior when it is on, and reject calls that
 would save preferences. The unmodified build fails the off-state checks.
 
-One owner reports that a binary patch adding corresponding checks to their
-installed factory firmware corrects lights returning after they were turned
-off. That installed firmware differs from the published source. The report
-supports the fix on that keyboard; it does not establish that this repository's
-compiled image has been tested on hardware. Firmware dumps and the binary
-patch remain outside this repository.
+On October 28, 2026, one owner flashed the source build from `3f660be` and
+reported that everything seemed to work so far. This records one keyboard and
+setup; the owner did not list individual feature tests, connection modes, or
+test duration. Firmware dumps and the earlier binary patch remain outside this
+repository.

@@ -6,11 +6,15 @@ code, build changes, and firmware fixes.
 
 EPOMAKER already publishes the [original board source](https://github.com/Epomaker/luma84).
 This project adds a working build script, exact source revisions, and documented
-changes needed to compile the vendor code. Nobody has tested this repository's
-compiled firmware on a keyboard yet.
+changes needed to compile the vendor code. On October 28, 2026, one owner
+reported that a source build from `3f660be` works on their Luma84 so far.
+They did not specify individual feature tests, connection modes, or test duration.
 
 The wake hooks now honor the saved master light switch. See
 [the source changes and test results](docs/build-changes.md) for details.
+
+The [personal/wegel branch](https://github.com/wegel/luma84/tree/personal/wegel)
+adds solid RGB colors, keypress ripples, and Fn color controls.
 
 ## Build on Linux x86_64
 
