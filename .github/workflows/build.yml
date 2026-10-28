@@ -19,3 +19,5 @@ jobs:
           echo "$RUNNER_TEMP/luma84-ci/bin" >> "$GITHUB_PATH"
       - name: Compile without accessing hardware
         run: python3 tools/build.py
+      - name: Check wake behavior without accessing hardware
+        run: uv run --no-project --with unicorn==2.1.2 --with setuptools==75.8.2 python tools/test_wake.py

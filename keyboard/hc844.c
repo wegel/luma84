@@ -1,5 +1,6 @@
 // Copyright 2024 Epomaker (@Epomaker)
 // SPDX-License-Identifier: GPL-2.0-or-later
+// Modified 2026-10-28: Honor the saved master-off setting in both wake hooks.
 
 #include QMK_KEYBOARD_H
 #include "wls/wls.h"
@@ -525,9 +526,17 @@ void suspend_power_down_kb(void) {
 
 void suspend_wakeup_init_kb(void) {
 
+    // The body-light flag can stay enabled after RGB_TOG turns the master off.
+    if (!confinfo.hs_rgb_tog) {
 #    ifdef LED_POWER_EN_PIN
-    if (rgb_matrix_get_val() != 0 && hs_get_rgb_enable()) gpio_write_pin_high(LED_POWER_EN_PIN);
+        gpio_write_pin_low(LED_POWER_EN_PIN);
 #    endif
+        rgb_matrix_disable_noeeprom();
+    } else {
+#    ifdef LED_POWER_EN_PIN
+        if (rgb_matrix_get_val() != 0 && hs_get_rgb_enable()) gpio_write_pin_high(LED_POWER_EN_PIN);
+#    endif
+    }
 
     wireless_devs_change(wireless_get_current_devs(), wireless_get_current_devs(), false);
     suspend_wakeup_init_user();
@@ -1535,7 +1544,7 @@ void hs_reset_settings(void) {
 void lpwr_wakeup_hook(void) { // WAKEUP
     hs_mode_scan(false, confinfo.devs, confinfo.last_btdevs);
 
-    if (rgb_matrix_get_val() != 0 && hs_get_rgb_enable())
+    if (confinfo.hs_rgb_tog && rgb_matrix_get_val() != 0 && hs_get_rgb_enable())
         gpio_write_pin_high(LED_POWER_EN_PIN);
     else
         gpio_write_pin_low(LED_POWER_EN_PIN);
@@ -1547,6 +1556,8 @@ void lpwr_wakeup_hook(void) { // WAKEUP
         writePin(LED_POWER_EN_PIN, RGB_DRIVER_EN_STATE);
     } else {
         writePin(LED_POWER_EN_PIN, !RGB_DRIVER_EN_STATE);
+        // The shared wake code may have restored the RGB matrix before this hook.
+        rgb_matrix_disable_noeeprom();
     }
 }
 

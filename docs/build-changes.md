@@ -32,4 +32,34 @@ that macro, even if the compiler accepts the code.
 
 These changes make a local build possible. We have not proved that they
 reproduce the original vendor build or preserve every hardware behavior.
-The original keymaps, light flags, and sleep rules remain in the source.
+The original keymaps and saved light flags remain in the source.
+
+## Keep the master light switch off after wake
+
+`RGB_TOG` saves the master light switch in `confinfo.hs_rgb_tog`. The separate
+`confinfo.rgb_enable` flag can remain true when the master switch is off.
+The original `suspend_wakeup_init_kb()` checks brightness and that separate flag
+before restoring LED power, without checking the master switch. Fn release
+checks the master switch and cuts LED power, so these handlers can disagree.
+
+`suspend_wakeup_init_kb()` now cuts LED power and disables the key-light matrix
+when the master switch is off. `lpwr_wakeup_hook()` also checks the master switch
+before raising LED power and disables the matrix in its off branch. The shared
+sleep code can restore the matrix before calling these hooks. Both hooks use
+`rgb_matrix_disable_noeeprom()`, which changes the running state without saving
+new preferences. When the master switch is on, both hooks keep their previous
+behavior. Fn's temporary light display remains unchanged.
+
+`tools/test_wake.py` runs both hooks from the compiled firmware in a Cortex-M
+emulator. It checks all 256 combinations of the saved flag byte, zero and nonzero
+brightness, initial LED power, and initial matrix state: 4,096 cases in total.
+The checks require LED power and the matrix to stay off when the master switch
+is off, preserve the previous behavior when it is on, and reject calls that
+would save preferences. The unmodified build fails the off-state checks.
+
+One owner reports that a binary patch adding corresponding checks to their
+installed factory firmware corrects lights returning after they were turned
+off. That installed firmware differs from the published source. The report
+supports the fix on that keyboard; it does not establish that this repository's
+compiled image has been tested on hardware. Firmware dumps and the binary
+patch remain outside this repository.

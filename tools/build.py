@@ -131,7 +131,7 @@ def main():
               'compiler_version': compiler_version, 'artifacts': artifacts,
               'source_sha256': sources,
               'hardware_tested': False, 'flashed': False,
-              'note': 'Compiled from the vendor source with documented QMK compatibility changes; not a byte-for-byte factory reproduction.'}
+              'note': 'Compiled from the vendor source with documented build and wake-state fixes; not a byte-for-byte factory reproduction.'}
     (destination / 'build.json').write_text(json.dumps(report, indent=2) + '\n')
     print('Compiled firmware and source hashes are in dist/. No device was opened.', flush=True)
 

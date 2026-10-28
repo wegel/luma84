@@ -2,12 +2,15 @@
 
 Build EPOMAKER's published Luma84 source with a pinned QMK revision and a
 documented ARM compiler. This repository keeps the board code, shared wireless
-code, and the small changes needed to compile them together.
+code, build changes, and firmware fixes.
 
 EPOMAKER already publishes the [original board source](https://github.com/Epomaker/luma84).
 This project adds a working build script, exact source revisions, and documented
 changes needed to compile the vendor code. Nobody has tested this repository's
 compiled firmware on a keyboard yet.
+
+The wake hooks now honor the saved master light switch. See
+[the source changes and test results](docs/build-changes.md) for details.
 
 ## Build on Linux x86_64
 
@@ -33,6 +36,17 @@ The compiler check establishes that the code compiles. It does not establish
 that wired mode, Bluetooth, 2.4 GHz wireless, sleep, or lights behave correctly
 on a physical keyboard. The local binary differs from EPOMAKER's published
 factory image. Do not describe it as an unchanged factory build.
+
+After building, run the wake checks with:
+
+```sh
+uv run --no-project --with unicorn==2.1.2 --with setuptools==75.8.2 python tools/test_wake.py
+```
+
+The checks execute both wake hooks from the compiled ELF in a Cortex-M emulator.
+They check the master switch, body-light flag, brightness, initial LED power,
+and initial key-light state. They replace radio, clock, and host callbacks with
+test substitutes and do not access a keyboard.
 
 ## Read the code
 
