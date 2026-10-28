@@ -1,4 +1,9 @@
-# Luma84 firmware
+# Luma84 personal firmware
+
+This branch, `personal/wegel`, adds wegel's preferred lights to the Luma84 source:
+a solid RGB color, or the same color with a ripple from each key press. Fn keys
+adjust red, green, and blue separately and select ten presets. The four body
+lights follow the background color. See [the controls](docs/personal-build.md).
 
 Build EPOMAKER's published Luma84 source with a pinned QMK revision and a
 documented ARM compiler. This repository keeps the board code, shared wireless
@@ -6,15 +11,13 @@ code, build changes, and firmware fixes.
 
 EPOMAKER already publishes the [original board source](https://github.com/Epomaker/luma84).
 This project adds a working build script, exact source revisions, and documented
-changes needed to compile the vendor code. On October 28, 2026, one owner
-reported that a source build from `3f660be` works on their Luma84 so far.
-They did not specify individual feature tests, connection modes, or test duration.
+changes needed to compile the vendor code. On October 28, 2026, the owner
+reported that both the `main` source build and this personal build work on their
+Luma84. They did not specify individual feature tests, connection modes, or test
+duration.
 
 The wake hooks now honor the saved master light switch. See
 [the source changes and test results](docs/build-changes.md) for details.
-
-The [personal/wegel branch](https://github.com/wegel/luma84/tree/personal/wegel)
-adds solid RGB colors, keypress ripples, and Fn color controls.
 
 ## Build on Linux x86_64
 
@@ -45,6 +48,7 @@ After building, run the wake checks with:
 
 ```sh
 uv run --no-project --with unicorn==2.1.2 --with setuptools==75.8.2 python tools/test_wake.py
+uv run --no-project --with unicorn==2.1.2 --with setuptools==75.8.2 python tools/test_personal_rgb.py
 ```
 
 The checks execute both wake hooks from the compiled ELF in a Cortex-M emulator.

@@ -6,6 +6,7 @@
 #include "wls/wls.h"
 #include "rgb_record/rgb_record.h"
 #include "rgb_record/rgb_rgblight.h"
+#include "personal_rgb.h"
 
 #ifdef WIRELESS_ENABLE
 #    include "wireless.h"
@@ -496,6 +497,7 @@ void keyboard_post_init_kb(void) {
 #endif
     start_hsv = rgb_matrix_get_hsv();
     if (!rgblight_is_enabled()) mode = 10;
+    personal_rgb_init();
     matrix_init_user();
 }
 
@@ -830,6 +832,8 @@ void im_rgblight_increase(void) {
 RGB rgb_test_open;
 bool im_test_rate_flag;
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+
+    if (!personal_rgb_process_record(keycode, record)) return false;
 
     if (process_record_user(keycode, record) != true) {
         return false;
@@ -1250,6 +1254,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 }
 
 void housekeeping_task_user(void) { // loop
+    personal_rgb_task();
     uint8_t hs_now_mode;
     static uint32_t hs_current_time;
 
@@ -1471,12 +1476,7 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
         ee_clr_timer = 0;
     }
 
-#ifdef RGBLIGHT_ENABLE
-    if (rgb_matrix_indicators_advanced_rgblight(led_min, led_max) != true) {
-
-        return false;
-    }
-#endif
+    // Personal effects already paint the body lights with the same solid RGB.
     
 #ifdef WIRELESS_ENABLE
     rgb_matrix_wls_indicator();

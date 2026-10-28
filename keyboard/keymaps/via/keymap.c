@@ -26,11 +26,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,  KC_LCMD,  KC_LALT,                      KC_SPC,                                 KC_RALT,  MO(_FL),  KC_RCTL,            KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [_FL] = LAYOUT( /* Base */
-        EE_CLR,   KC_MYCM,  KC_WHOM,  KC_MAIL,  KC_CALC,  KC_MSEL,  KC_MSTP,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,  RL_MOD,   _______,  
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_SCRL,  KC_PAUSE, _______,  _______,  _______,            RGB_TOG,  _______,     
-        _______,  KC_BT1,   KC_BT2,   KC_BT3,   KC_2G4,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            RGB_MOD,  _______,    
-        _______,  KC_NO,    TO(_MBL), _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,                      RGB_HUI,  _______,  
-        _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,  _______,                      MO(_FBL), RGB_VAI,  _______,  
+        EE_CLR, KC_MYCM, KC_WHOM, KC_MAIL, KC_CALC, KC_MSEL, KC_MSTP, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______, RGB_MOD, _______,
+        _______, PC_PRESET_1, PC_PRESET_2, PC_PRESET_3, PC_PRESET_4, PC_PRESET_5, PC_PRESET_6, PC_PRESET_7, PC_PRESET_8, PC_PRESET_9, PC_PRESET_0, _______, _______, RGB_TOG, _______,
+        _______, KC_BT1, KC_BT2, KC_BT3, KC_2G4, _______, _______, _______, KC_SCRL, KC_PAUSE, _______, _______, _______, RGB_MOD, _______,
+        _______, KC_NO, TO(_MBL), _______, _______, _______, _______, _______, _______, PC_RED_UP, PC_GREEN_UP, PC_BLUE_UP, RGB_HUI, _______,
+        _______, _______, _______, _______, _______, NK_TOGG, _______, _______, PC_RED_DOWN, PC_GREEN_DOWN, PC_BLUE_DOWN, MO(_FBL), RGB_VAI, _______,
         _______,  GU_TOGG,  _______,                      HS_BATQ,                                _______,  _______,  _______,            RGB_SPD,  RGB_VAD,  RGB_SPI),
 
     [_MBL] = LAYOUT( /* Base */
@@ -42,11 +42,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,  KC_LALT,  KC_LCMD,                      KC_SPC,                                 KC_RCMD,  MO(_MFL), KC_RCTL,            KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [_MFL] = LAYOUT( /* Base */
-        EE_CLR,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,  _______,  _______,  
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            RGB_TOG,  _______,    
-        _______,  KC_BT1,   KC_BT2,   KC_BT3,   KC_2G4,   _______,  _______,  KC_F13,   KC_F14,   KC_F15,   _______,  _______,  _______,            RGB_MOD,  _______,   
-        _______,  TO(_BL),  KC_NO,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,                      RGB_HUI,  _______,  
-        _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,  _______,                      MO(_FBL), RGB_VAI,  _______,  
+        EE_CLR, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, _______, RGB_MOD, _______,
+        _______, PC_PRESET_1, PC_PRESET_2, PC_PRESET_3, PC_PRESET_4, PC_PRESET_5, PC_PRESET_6, PC_PRESET_7, PC_PRESET_8, PC_PRESET_9, PC_PRESET_0, _______, _______, RGB_TOG, _______,
+        _______, KC_BT1, KC_BT2, KC_BT3, KC_2G4, _______, _______, _______, KC_SCRL, KC_PAUSE, _______, _______, _______, RGB_MOD, _______,
+        _______, TO(_BL), KC_NO, _______, _______, _______, _______, _______, _______, PC_RED_UP, PC_GREEN_UP, PC_BLUE_UP, RGB_HUI, _______,
+        _______, _______, _______, _______, _______, NK_TOGG, _______, _______, PC_RED_DOWN, PC_GREEN_DOWN, PC_BLUE_DOWN, MO(_FBL), RGB_VAI, _______,
         _______,  _______,  _______,                      HS_BATQ,                                _______,  _______,  _______,            RGB_SPD,  RGB_VAD,  RGB_SPI),
     [_FBL] = LAYOUT( /* Base */ 
         QK_BOOT,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  

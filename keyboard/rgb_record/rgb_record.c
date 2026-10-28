@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "rgb_record.h"
+#include "personal_rgb.h"
 #include "rgb_matrix.h"
 #include "eeprom.h"
 
@@ -267,6 +268,7 @@ void eeconfig_init_user_datablock(void) {
 
     addr = (uint32_t)(RGBREC_EECONFIG_ADDR);
     eeprom_update_block(rgbrec_default_effects, (void *)addr, sizeof(rgbrec_default_effects));
+    personal_rgb_reset();
 }
 
 uint8_t find_index(void) {

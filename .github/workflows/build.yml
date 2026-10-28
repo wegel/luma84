@@ -21,3 +21,5 @@ jobs:
         run: python3 tools/build.py
       - name: Check wake behavior without accessing hardware
         run: uv run --no-project --with unicorn==2.1.2 --with setuptools==75.8.2 python tools/test_wake.py
+      - name: Check personal RGB controls and ripple without accessing hardware
+        run: uv run --no-project --with unicorn==2.1.2 --with setuptools==75.8.2 python tools/test_personal_rgb.py

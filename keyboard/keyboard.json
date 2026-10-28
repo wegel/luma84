@@ -92,6 +92,70 @@
         },
         {
             "key": "EX_RATE"
+        },
+        {
+            "key": "PC_RED_UP",
+            "aliases": ["PC_RU"]
+        },
+        {
+            "key": "PC_RED_DOWN",
+            "aliases": ["PC_RD"]
+        },
+        {
+            "key": "PC_GREEN_UP",
+            "aliases": ["PC_GU"]
+        },
+        {
+            "key": "PC_GREEN_DOWN",
+            "aliases": ["PC_GD"]
+        },
+        {
+            "key": "PC_BLUE_UP",
+            "aliases": ["PC_BU"]
+        },
+        {
+            "key": "PC_BLUE_DOWN",
+            "aliases": ["PC_BD"]
+        },
+        {
+            "key": "PC_PRESET_1",
+            "aliases": ["PC_P1"]
+        },
+        {
+            "key": "PC_PRESET_2",
+            "aliases": ["PC_P2"]
+        },
+        {
+            "key": "PC_PRESET_3",
+            "aliases": ["PC_P3"]
+        },
+        {
+            "key": "PC_PRESET_4",
+            "aliases": ["PC_P4"]
+        },
+        {
+            "key": "PC_PRESET_5",
+            "aliases": ["PC_P5"]
+        },
+        {
+            "key": "PC_PRESET_6",
+            "aliases": ["PC_P6"]
+        },
+        {
+            "key": "PC_PRESET_7",
+            "aliases": ["PC_P7"]
+        },
+        {
+            "key": "PC_PRESET_8",
+            "aliases": ["PC_P8"]
+        },
+        {
+            "key": "PC_PRESET_9",
+            "aliases": ["PC_P9"]
+        },
+        {
+            "key": "PC_PRESET_0",
+            "aliases": ["PC_P0"]
         }
     ],
     "matrix_pins": {

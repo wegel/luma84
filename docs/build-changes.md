@@ -1,5 +1,8 @@
 # Changes from EPOMAKER's source
 
+The `personal/wegel` branch also adds [personal RGB controls and two light
+effects](personal-build.md). Those changes are kept on this branch.
+
 EPOMAKER published the board at commit
 `3753140abcc9ba7c8cca04721f0e1400b82ff9fe`. The vendor README gives the target
 `epomaker/hc844:default`, but it does not identify the QMK base or compiler used
